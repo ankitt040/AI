@@ -1,0 +1,40 @@
+In a general search algorithm each state (n) maintains a function f(n) = g(n) + h(n), where
+g(n) is the least cost form source state to state n found so far and
+h(n) is the estimated cost of the optimal path from state n to the goal state.
+
+Implement a search algorithm for solving the 8-puzzle problem with following assumptions.
+1. h(n) = 0, g(n) = least cost from source state to current state so far.
+2. h(n) = number of tiles displaced from their destined position. g(n) = least cost from source state to current state so far.
+3. h(n) = sum of manhattan distance of each tiles from the goal position. g(n) = least cost from source state to current state so far.
+4. Devise a hueristics such that h(n) >= h*(n). g(n) = least cost from source state to current state so far.
+
+Notes:
+1. You should make use of two lists for the implementation. One (close list) for maintaining the
+already explored states and other (open list) for maintaining the states which are found but yet to be explored.
+
+2. Input is given in a file in the following format. Read the input and store the information in a
+matrix. Configuration of start state can be anything.
+
+Start State
+T6 T7 T3
+T8 T4 T2
+T1 B T5
+Goal State
+T1 T2 T3
+T4 T5 T6
+T7 T8 B
+where T1, T2, ..., T8 are the tiles number and B is blank space.
+
+3. Output should have following information
+On success
+a. Success message
+b. Start state
+c. Goal state
+d. Optimal Path
+e. Optimal Cost of the path.
+f. Total number of states explored.
+g. Print the content of both lists (open and close list) at the time of success.
+On failure
+a. Failure message
+b. Start state
+c. Goal state

@@ -1,0 +1,35 @@
+The code uses A* algorithm to solve the 8 puzzle problem. The code contains a class 'State' to store the state information. It also contains a class 'OpenList' to store the states which are found but yet to be discovered. Closed List is implemented using set in C++. 
+Proper naming convention is used to describe the functions.
+All the four cases are printed in the output on running the code.
+
+To run the code please compile as "g++ 8puzzle.cpp -o 8puzzle" and run with the command "8puzzle <inp.txt". inp.txt will contain the input as described in file input_format.txt.
+The psuedo code of the approach is given below.
+
+
+
+
+--------------------  psedo-code  --------------------------
+bool a_star(startState, goalState){
+	open_list.insert(startState);
+	while( !open_list.empty() ){
+		curState= open_list.popMin();
+		if( curState.equals(goalState) ){
+			print("SUCCESS");
+			printPath(curState);
+			open_list.print();
+			close_list.print();
+			return true;
+		}
+		close_list.insert(curState);
+		nextStates= curState.getChildren();
+		for( next in nextStates ){
+			if( ! present(close_list, next) ){
+				if( open_list.exists(next) && (next.get_g_val()< open_list.get_g_val(next)) ){
+					open_list.eraseCopy( next );
+				}
+				open_list.insert(next);
+			}
+		}
+	}
+	return false;
+}
